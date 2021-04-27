@@ -35,7 +35,8 @@ static3==0.7.0
 ## Links
  
   - Link of deployed application: (Heroku)
-  - Repository: http://myport-rai.herokuapp.com/
+  - Repository: https://github.com/Raii-Azevedo/MyPortifolio
+  - Deploy: http://myport-rai.herokuapp.com/
  
 ## Versão
  
