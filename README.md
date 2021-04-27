@@ -46,6 +46,4 @@ static3==0.7.0
  
 * **RAISSA AZEVEDO**: @Raii-Azevedo (https://github.com/Raii-Azevedo)
  
- 
-Please follow github and join us!
-Thanks to visiting me and good coding!
+
