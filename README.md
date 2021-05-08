@@ -1,9 +1,10 @@
 ![Logo of the project](http://myport-rai.herokuapp.com/static/img/nlogo.png)
+![MyPort](https://github.com/Raii-Azevedo/MyPortifolio/blob/master/MyPort.gif)
  
 ## Portfólio
  
-... Protótipo do meu portfólio pessoal, onde indico as tecnologias que domino e disponibilizo minhas redes sociais e meu curriculo.
- 
+- Protótipo do meu portfólio pessoal, onde indico as tecnologias que domino e disponibilizo minhas redes sociais e meu curriculo.
+- Prototype of my personal portfolio, where I indicate the technologies that I master and make available my social networks and my curriculum.
  
 ## Tecnologia
  
