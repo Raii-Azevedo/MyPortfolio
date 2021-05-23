@@ -1,4 +1,3 @@
-![Logo of the project](http://myport-rai.herokuapp.com/static/img/nlogo.png)
 ![MyPort](https://github.com/Raii-Azevedo/MyPortifolio/blob/master/MyPort.gif)
  
 ## Portfólio
@@ -48,4 +47,3 @@ Aqui estão as tecnologias utilizadas nesse projeto:
  
 * **RAISSA AZEVEDO**: @Raii-Azevedo (https://github.com/Raii-Azevedo)
  
-
