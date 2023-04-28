@@ -18,7 +18,7 @@ Aqui estão as tecnologias utilizadas nesse projeto:
 ## Services Used
  
 * Github
-* Heroku
+* Bohr.io
  
  
 ## Links
