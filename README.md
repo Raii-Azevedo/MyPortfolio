@@ -23,7 +23,6 @@ Aqui estão as tecnologias utilizadas nesse projeto:
  
 ## Links
  
-  - Link of deployed application: (Heroku)
   - Repository: https://github.com/Raii-Azevedo/MyPortifolio
   - Deploy: 
  
