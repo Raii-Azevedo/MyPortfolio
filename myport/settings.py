@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-#import dj_database_url
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '0r*pfv2@eilr7#unhexzsdtj&lswvm6m1)3wa@&194u+a1v-%-'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'myport.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'portifolio',
@@ -85,11 +85,11 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
     }
-}
-
-'''DATABASES = {
-    'default': dj_database_url.config()
 }'''
+
+DATABASES = {
+    'default': dj_database_url.config()
+}
 
 
 # Password validation
