@@ -6,6 +6,8 @@
 - Prototype of my personal portfolio, where I indicate the technologies that I master and make available my social networks and my curriculum.
  
 ## Tecnologia
+REQUERIMENTOS
+- pip install -r requirements.txt
  
 Aqui estão as tecnologias utilizadas nesse projeto:
 - HTML
