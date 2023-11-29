@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
+/* GENERAL */
 * {
   box-sizing: border-box;
   outline: none;
@@ -18,7 +19,7 @@ body {
   scroll-behavior: smooth;
   font-family: 'DM Sans', sans-serif;
   font-size: 12px;
-  background-image: var(--grad)
+  background-image: var(--grad);
 }
 
 section {
@@ -50,6 +51,8 @@ html {
   font-size: 62.5%;
   /*overflow: hidden;*/
 }
+
+/* HEADER */
 
 .header {
   position: fixed;
@@ -90,6 +93,8 @@ html {
   color: var(--text-color);
   display: none;
 }
+
+/* HOME */
 
 .home {
   display: flex;
@@ -179,6 +184,9 @@ span {
   color: #fff;
 }
 
+
+/* ABOUT */
+
 .about {
   display: flex;
   justify-content: center;
@@ -196,9 +204,9 @@ span {
   width: 50vh;
   height: 55vh;
   object-fit: cover;
-  border-radius: 30%;
-  border: 2px solid #7F77AC;
-} 
+  border-radius: 45%;
+  border: 1px solid #7F77AC;
+}
 
 .about-img img {
   width: 100%;
@@ -226,4 +234,114 @@ span {
   font-size: 1.6rem;
   color: #fff;
   margin: 2rem 0 3rem;
+}
+
+
+/* SERVICES */
+
+.services {
+  font-size: 2.6rem;
+  color: #fff;
+  background: var(--grad);
+}
+
+.services-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.services-container .services-box{
+  flex: 1 1 30rem;
+  padding: 3rem 2rem 4rem;
+  border-radius: 2rem;
+  text-align: center;
+  border: .2rem solid #7F77AC;
+  transition: .5s ease;
+}
+
+.services-container .services-box:hover{
+  border-color: var(--main-color);
+  transform: scale(1.02);
+}
+
+.services-box i {
+  font-size: 7rem;
+  color: var(--main-color);
+}
+
+.services h3 {
+  font-size: 2.6rem;
+}
+
+.services h2 {
+  font-weight: 600;
+  margin-bottom: 7rem;
+}
+
+.services p {
+  font-size: 1.6rem;
+  color: #fff;
+  margin: 1rem 0 3rem;
+}
+
+.service-btn {
+  display: inline-block;
+  padding: 1rem 2.8rem;
+  background: var(--main-color);
+  border-radius: 4rem;
+  box-shadow: 0 0 1rem var(--main-color);
+  font-size: 1.6rem;
+  color: var(--second-bg-color);
+  letter-spacing: .1rem;
+  font-weight: 600;
+  transition: .5s ease;
+}
+
+.service-btn:hover {
+  box-shadow: none;
+  text-decoration: none;
+  color: #fff;
+}
+
+
+/* PORTFÓLIO */
+css aqui
+
+/* FOOTER */
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 15vh;
+}
+
+.footer {
+  color: #fff;
+}
+
+.social-media-footer a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  background: transparent;
+  border: .2rem solid var(--main-color);
+  border-radius: 50%;
+  font-size: 2rem;
+  color: var(--main-color);
+  margin: 3rem 1.5rem 3rem 0;
+  transition: .5s ease;
+}
+
+.social-media-footer a:hover {
+  background: var(--main-color);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 0 1rem var(--main-color);
 }
