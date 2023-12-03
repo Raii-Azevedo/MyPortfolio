@@ -139,8 +139,9 @@ span {
 }
 
 .home-content p {
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: #fff;
+  margin: 2rem 0 3rem;
 }
 
 .social-media a {
@@ -230,7 +231,7 @@ span {
 }
 
 .about-content p {
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: #fff;
   margin: 2rem 0 3rem;
 }
