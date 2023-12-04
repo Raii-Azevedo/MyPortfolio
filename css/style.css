@@ -69,6 +69,11 @@ html {
   z-index: 100;
 }
 
+.header.sticky {
+  border-bottom: .1rem solid var(--main-color);
+}
+
+
 .logo {
   font-size: 2.5rem;
   color: var(--text-color);
@@ -258,13 +263,13 @@ span {
   padding: 3rem 2rem 4rem;
   border-radius: 2rem;
   text-align: center;
-  border: .2rem solid #7F77AC;
   transition: .5s ease;
 }
 
 .services-container .services-box:hover{
   border-color: var(--main-color);
   transform: scale(1.02);
+  border: .2rem solid #7F77AC;
 }
 
 .services-box i {
@@ -439,36 +444,160 @@ span {
 
 /* FOOTER */
 
-.footer-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 15vh;
-}
-
-.footer {
+.footer{
   color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 2rem 9%;
+  background: var(--grad);
 }
 
-.social-media-footer a {
+.footer-iconTop a {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   background: transparent;
   border: .2rem solid var(--main-color);
   border-radius: 50%;
-  font-size: 2rem;
+  font-size: 1rem;
   color: var(--main-color);
   margin: 3rem 1.5rem 3rem 0;
   transition: .5s ease;
 }
 
-.social-media-footer a:hover {
+.footer-iconTop a:hover {
   background: var(--main-color);
   color: #fff;
   text-decoration: none;
   box-shadow: 0 0 1rem var(--main-color);
+}
+
+.footer p {
+  font-size: 1.2rem;
+}
+
+.footer .foot-btn {
+  font-size: 3rem;
+  color: var(--main-color);
+  text-decoration: none;
+}
+
+/* BREAKPOINTS */
+@media (max-width: 1200px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (max-width: 991px) {
+  .header {
+    padding: 2rem 3%;
+  }
+
+  section {
+    padding: 10rem 3% 2rem;
+  }
+
+  .services {
+    padding-bottom: 7rem;
+  }
+
+  .portfolio {
+    padding-bottom: 7rem;
+  }
+
+  .footer {
+    padding: 2rem 3%;
+  }
+}
+
+@media (max-width: 768px) {
+  #menu-icon {
+    display: block;
+    position: absolute;
+    top: 2.5rem;
+    right: 1rem; /* Ajuste a posição do ícone do hambúrguer */
+    font-size: 3.6rem;
+    color: var(--text-color);
+    cursor: pointer;
+  }
+
+  .navbar {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem 3%;
+  }
+
+  #menu-icon:checked + .navbar {
+    display: block; /* Exibe o menu de navegação quando o checkbox associado está marcado */
+  }
+
+  .navbar.active {
+    display: block;
+  }
+
+  .navbar a {
+    display: block;
+    font-size: 2rem;
+    margin: 3rem 0;
+  }
+
+  .navbar a {
+    display: none;
+  }
+
+  .navbar.active a {
+    display: block; /* Exibe os links do menu de navegação quando o checkbox está marcado */
+  }
+
+  .home {
+    flex-direction: column;
+  }
+
+  .home-content h3 {
+    font-size: 2.6rem;
+  }
+
+  .home-content h1 {
+    font-size: 5rem;
+  }
+
+  .home-img img {
+    width: 70vw 100%;
+    margin-top: 4rem;
+  }
+
+  .about {
+    flex-direction: column-reverse;
+  }
+
+  .about img {
+    width: 70vw;
+    margin-top: 4rem;
+  }
+
+  .services h2 {
+    margin-bottom: 3rem;
+  }
+
+  .portfolio h2 {
+    margin-bottom: 3rem;
+  }
+
+  .portfolio-container{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 617px) {
+  .portfolio-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
