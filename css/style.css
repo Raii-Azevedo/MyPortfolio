@@ -8,6 +8,7 @@
 
 body {
   margin: 0;
+  display: flex;
   justify-content: center;
   flex-direction: column;
   /*text-decoration: none;*/
@@ -50,7 +51,7 @@ section {
 
 html {
   font-size: 62.5%;
-  /*overflow: hidden; ESCONDE O SCROLL*/ 
+  overflow: hidden; /*ESCONDE O SCROLL*/
 }
 
 /* HEADER */
@@ -108,18 +109,23 @@ html {
   align-items: center;
 }
 
-.home-img {
+.home-img img {
   width: 35vw;
-  height: 25vw;
   overflow: hidden;
   position: relative;
+  animation: floatImage 4s ease-in-out infinite
 }
 
-.home-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
+@keyframes floatImage {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2.4rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .home-content h3 {
@@ -396,6 +402,7 @@ span {
 /* CONTACT */
 
 .contact {
+  flex: 1;
   background: var(--grad);
 }
 
@@ -452,6 +459,8 @@ span {
   flex-wrap: wrap;
   padding: 2rem 9%;
   background: var(--grad);
+  bottom: 0;
+  width: 100%;
 }
 
 .footer-iconTop a {
@@ -486,6 +495,8 @@ span {
   text-decoration: none;
 }
 
+
+
 /* BREAKPOINTS */
 @media (max-width: 1200px) {
   html {
@@ -510,12 +521,21 @@ span {
     padding-bottom: 7rem;
   }
 
+  .contact {
+    min-height: auto;
+  }
+
   .footer {
     padding: 2rem 3%;
   }
 }
 
 @media (max-width: 768px) {
+
+  .home {
+    flex-direction: column;
+  }
+
   #menu-icon {
     display: block;
     position: absolute;
@@ -570,8 +590,9 @@ span {
   }
 
   .home-img img {
-    width: 70vw 100%;
+    width: 100%;
     margin-top: 4rem;
+    margin-bottom: 2rem; 
   }
 
   .about {
@@ -599,5 +620,35 @@ span {
 @media (max-width: 617px) {
   .portfolio-container {
     grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+
+  .contact form .input-box input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .home-img img {
+    width: 90vw;
+  }
+
+  .about-img img {
+    width: 90vw;
+  }
+
+  .footer {
+    flex-direction: column-reverse;
+  }
+
+  .footer p {
+    text-align: center;
+    margin-top: 2rem;
   }
 }
