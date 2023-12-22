@@ -144,3 +144,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CK EDITOR
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+# E-MAIL CONFIGURATION
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
