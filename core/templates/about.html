@@ -1,18 +1,21 @@
-  {% load static %}
+{% load static %}
 
-    <!-- about section design -->
-    <section class="about" id="about">
-        <div class="about-img">
-            <img src="{% static 'images/about.png' %}" class="about-img">
-        </div>
+<!-- about section design -->
 
-        <div class="about-content">
-            <h2 class="heading">About <span>Me</span></h2>
-            <h3>Fullstack Developer!</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi quaerat odit voluptatibus libero saepe
-                magnam fuga! Itaque, fuga voluptatibus dicta placeat cupiditate nobis pariatur, corrupti ad adipisci
-                minus quod aliquid.</p>
-
-            <a href="#" class="round-btn">Read More</a>
-        </div>
-    </section>
+<section class="about" id="about">
+    {% if about %}
+        {% for a in about %}
+            <div class="about-img">
+                <img src="{% static 'images/about.png' %}" class="about-img">
+            </div>
+            <div class="about-content">
+                <h2 class="heading">About <span>Me</span></h2>
+                <h3>Fullstack Developer!</h3>
+                <p>{{ a.description }}</p>
+                <a href="#" class="round-btn">Read More</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Nenhum dado sobre encontrado.</p>
+    {% endif %}
+</section>

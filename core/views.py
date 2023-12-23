@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from .models import Post, About  
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    abouts = About.objects.all()
+    return render(request, 'index.html', {'about': abouts})
 
-def blog (request):
-    return render(request, 'blog.html')
+def blog(request):
+    posts = Post.objects.all()
+    return render(request, 'blog.html', {'content': posts})

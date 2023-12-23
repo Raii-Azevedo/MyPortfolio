@@ -38,10 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
     'ckeditor',
     'ckeditor_uploader',
     'stdimage',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -89,7 +89,7 @@ DATABASES = {
     'engine': 'django.backends.mysql',
     'name': 'myport',
     'user': 'raissa',
-    'password': 'R@issinha92',
+    'password': '*******',
     'host': 'localhost',
     'port': '3306',
 }'''

@@ -31,8 +31,7 @@ class Documento(Base):
 class About(Base):
     about = models.CharField('About', max_length=200)
     description = models.TextField('Description', max_length= 300)
-    imagem = StdImageField('Imagem', upload_to=get_file_path, variations={'thumb': {'width': 480, 'height': 480, 'crop': True}})
-
+   
     class Meta:
         verbose_name = 'About'
         verbose_name_plural = 'Abouts'
@@ -72,6 +71,7 @@ class Post(models.Model):
     content = RichTextUploadingField()
     author = models.ForeignKey(User, on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
+    youtube_url = models.URLField(blank=True, null=True, verbose_name='YouTube URL')
 
     def __str__(self):
         return self.title
