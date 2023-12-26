@@ -9,3 +9,6 @@ def index(request):
 def blog(request):
     posts = Post.objects.all()
     return render(request, 'blog.html', {'content': posts})
+
+def about_view(request):
+    return render(request, 'aboutC.html')

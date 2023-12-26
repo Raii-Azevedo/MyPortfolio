@@ -1,0 +1,13 @@
+/* Adicione este bloco ao seu arquivo CSS (about.css) */
+
+#about {
+    background-color: purple; /* Cor de fundo roxa */
+    color: white; /* Cor da fonte branca */
+}
+
+#about .presentation {
+    color: white;
+    font-size: 3.5rem;
+}
+
+/* Adicione mais estilos conforme necessário */

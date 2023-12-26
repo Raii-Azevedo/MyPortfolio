@@ -51,7 +51,8 @@ section {
 
 html {
   font-size: 62.5%;
-  overflow: hidden; /*ESCONDE O SCROLL*/
+  overflow: hidden;
+  /*ESCONDE O SCROLL*/
 }
 
 /* HEADER */
@@ -116,13 +117,17 @@ html {
   animation: floatImage 4s ease-in-out infinite
 }
 
+
+
 @keyframes floatImage {
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-2.4rem);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -264,7 +269,7 @@ span {
   gap: 2rem;
 }
 
-.services-container .services-box{
+.services-container .services-box {
   flex: 1 1 30rem;
   padding: 3rem 2rem 4rem;
   border-radius: 2rem;
@@ -272,7 +277,7 @@ span {
   transition: .5s ease;
 }
 
-.services-container .services-box:hover{
+.services-container .services-box:hover {
   border-color: var(--main-color);
   transform: scale(1.02);
   border: .2rem solid #7F77AC;
@@ -352,7 +357,7 @@ span {
 
 .portfolio-box:hover img {
   transform: scale(1.1);
-} 
+}
 
 .portfolio-box .portfolio-layer {
   position: absolute;
@@ -368,7 +373,7 @@ span {
   text-align: center;
   padding: 0 4rem;
   transform: translateY(100%);
-  transition:  .5s ease;
+  transition: .5s ease;
 }
 
 .portfolio-box:hover .portfolio-layer {
@@ -376,12 +381,12 @@ span {
 }
 
 .portfolio-layer h4 {
-  font-size:  3.5rem;
+  font-size: 3.5rem;
 }
 
 .portfolio-layer p {
   font-size: 1.6rem;
-  margin:  .3rem 0 1rem;
+  margin: .3rem 0 1rem;
 }
 
 .portfolio-layer a {
@@ -431,7 +436,7 @@ span {
   font-size: 1.6rem;
   color: var(--text-color);
   background: var(--aux-color);
-  border-radius:  .8rem;
+  border-radius: .8rem;
   margin: .7rem 0;
   border: .1rem solid #7F77AC;
 }
@@ -451,7 +456,7 @@ span {
 
 /* FOOTER */
 
-.footer{
+.footer {
   color: #fff;
   display: flex;
   align-items: center;
@@ -540,7 +545,8 @@ span {
     display: block;
     position: absolute;
     top: 2.5rem;
-    right: 1rem; /* Ajuste a posição do ícone do hambúrguer */
+    right: 1rem;
+    /* Ajuste a posição do ícone do hambúrguer */
     font-size: 3.6rem;
     color: var(--text-color);
     cursor: pointer;
@@ -555,8 +561,9 @@ span {
     padding: 1rem 3%;
   }
 
-  #menu-icon:checked + .navbar {
-    display: block; /* Exibe o menu de navegação quando o checkbox associado está marcado */
+  #menu-icon:checked+.navbar {
+    display: block;
+    /* Exibe o menu de navegação quando o checkbox associado está marcado */
   }
 
   .navbar.active {
@@ -574,7 +581,8 @@ span {
   }
 
   .navbar.active a {
-    display: block; /* Exibe os links do menu de navegação quando o checkbox está marcado */
+    display: block;
+    /* Exibe os links do menu de navegação quando o checkbox está marcado */
   }
 
   .home {
@@ -592,7 +600,7 @@ span {
   .home-img img {
     width: 100%;
     margin-top: 4rem;
-    margin-bottom: 2rem; 
+    margin-bottom: 2rem;
   }
 
   .about {
@@ -612,7 +620,7 @@ span {
     margin-bottom: 3rem;
   }
 
-  .portfolio-container{
+  .portfolio-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }

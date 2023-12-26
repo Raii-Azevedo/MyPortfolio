@@ -4,18 +4,75 @@
 
 <section class="about" id="about">
     {% if about %}
-        {% for a in about %}
-            <div class="about-img">
-                <img src="{% static 'images/about.png' %}" class="about-img">
-            </div>
-            <div class="about-content">
-                <h2 class="heading">About <span>Me</span></h2>
-                <h3>Fullstack Developer!</h3>
-                <p>{{ a.description }}</p>
-                <a href="#" class="round-btn">Read More</a>
-            </div>
-        {% endfor %}
+    {% for a in about %}
+    <div class="about-img">
+        <img src="{% static 'images/about.png' %}" class="about-img">
+    </div>
+    <div class="about-content">
+        <h2 class="heading">About <span>Me</span></h2>
+        <h3>Fullstack Developer!</h3>
+        <p>{{ a.description }}</p>
+        <!-- Botão para abrir o modal -->
+        <button type="button" class="round-btn" data-toggle="modal" data-target="#aboutModal">
+            Read More
+        </button>
+    </div>
+    {% endfor %}
     {% else %}
-        <p>Nenhum dado sobre encontrado.</p>
+    <p>Nenhum dado sobre encontrado.</p>
     {% endif %}
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="aboutModalLabel">About Me</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Conteúdo da seção About aqui -->
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <div class="img-thumb wow fadeInLeft" data-wow-delay="0.3s">
+                          <img class="img-fluid" src="#Minhaimagem" alt="Minha foto aqui">
+                      </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <div class="profile-wrapper wow fadeInRight" data-wow-delay="0.3s">
+                          <h3 class="presentation">Hi Guys!</h3>
+                          <p>Est diam venenatis arcu lacus ad. Duis quis eros. Cursus et rutrum eleifend sollicitudin
+                              lacinia justo id turpis. Nec convallis integer. Odio eget duis. Nulla aenean et. Blandit
+                              varius sollicitudin. Pellentesque leo primis neque urna magnis. Elit ut sollicitudin. Et est
+                              a nam dolores eget itaque sagittis et parturient duis est eleifend sociis rutrum odio
+                              viverra integer.</p>
+                          <div class="about-profile">
+                              <ul class="admin-profile">
+                                  <li><span class="pro-title"> Name </span> <span class="pro-detail">Raissa Azevedo</span>
+                                  </li>
+                                  <li><span class="pro-title"> Experience </span> <span class="pro-detail">2 Years</span>
+                                  </li>
+                                  <li><span class="pro-title"> Country </span> <span class="pro-detail">Brazil</span></li>
+                                  <li><span class="pro-title"> Location </span> <span class="pro-detail">Vila Velha - ES</span></li>
+                                  <li><span class="pro-title"> e-mail </span> <span
+                                          class="pro-detail">email@example.com</span></li>
+                                  <li><span class="pro-title"> Freelance </span> <span class="pro-detail">Available</span>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
