@@ -9,70 +9,70 @@
         <img src="{% static 'images/about.png' %}" class="about-img">
     </div>
     <div class="about-content">
-        <h2 class="heading">About <span>Me</span></h2>
-        <h3>Fullstack Developer!</h3>
-        <p>{{ a.description }}</p>
-        <!-- Botão para abrir o modal -->
-        <button type="button" class="round-btn" data-toggle="modal" data-target="#aboutModal">
-            Read More
-        </button>
-    </div>
-    {% endfor %}
-    {% else %}
-    <p>Nenhum dado sobre encontrado.</p>
-    {% endif %}
-</section>
 
-<!-- Modal -->
-<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="aboutModalLabel">About Me</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div class="row">
+            <div class="about-content">
+                <h2 class="heading">About <span>Me</span></h2>
+                <h3>Fullstack Developer!</h3>
+                <p>{{ a.description }}</p>
+            </div>
+
+            <div id="resume" class="section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="education wow fadeInRight" data-wow-delay="0.3s">
+                                <ul class="timeline">
+                                    <li>
+                                        <i class="icon-graduation"></i>
+                                        <h2 class="timelin-title">Education</h2>
+                                    </li>
+                                    <li>
+                                        <div class="content-text">
+                                            <h3 class="line-title">Bsc In CSE - Yale University</h3>
+                                            <span>2012 - 2016</span>
+                                            <p class="line-text">Expenses as material breeding insisted building to in.
+                                                Continual so distrusts pronounce by unwilling listening. Thing do taste
+                                                on
+                                                we
+                                                manor.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="experience wow fadeInRight" data-wow-delay="0.6s">
+                                <ul class="timeline">
+                                    <li>
+                                        <i class="icon-briefcase"></i>
+                                        <h2 class="timelin-title">Experience</h2>
+                                    </li>
+                                    <li>
+                                        <div class="content-text">
+                                            <h3 class="line-title">Art Director - Tesla Inc.</h3>
+                                            <span>Jan 2018 - Present</span>
+                                            <p class="line-text">Expenses as material breeding insisted building to in.
+                                                Continual so distrusts pronounce by unwilling listening. Thing do taste
+                                                on
+                                                we
+                                                manor.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <!-- Conteúdo da seção About aqui -->
-          <div class="container">
-              <div class="row">
-                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                      <div class="img-thumb wow fadeInLeft" data-wow-delay="0.3s">
-                          <img class="img-fluid" src="#Minhaimagem" alt="Minha foto aqui">
-                      </div>
-                  </div>
-                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                      <div class="profile-wrapper wow fadeInRight" data-wow-delay="0.3s">
-                          <h3 class="presentation">Hi Guys!</h3>
-                          <p>Est diam venenatis arcu lacus ad. Duis quis eros. Cursus et rutrum eleifend sollicitudin
-                              lacinia justo id turpis. Nec convallis integer. Odio eget duis. Nulla aenean et. Blandit
-                              varius sollicitudin. Pellentesque leo primis neque urna magnis. Elit ut sollicitudin. Et est
-                              a nam dolores eget itaque sagittis et parturient duis est eleifend sociis rutrum odio
-                              viverra integer.</p>
-                          <div class="about-profile">
-                              <ul class="admin-profile">
-                                  <li><span class="pro-title"> Name </span> <span class="pro-detail">Raissa Azevedo</span>
-                                  </li>
-                                  <li><span class="pro-title"> Experience </span> <span class="pro-detail">2 Years</span>
-                                  </li>
-                                  <li><span class="pro-title"> Country </span> <span class="pro-detail">Brazil</span></li>
-                                  <li><span class="pro-title"> Location </span> <span class="pro-detail">Vila Velha - ES</span></li>
-                                  <li><span class="pro-title"> e-mail </span> <span
-                                          class="pro-detail">email@example.com</span></li>
-                                  <li><span class="pro-title"> Freelance </span> <span class="pro-detail">Available</span>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
+        {% endfor %}
+        {% else %}
+        <p>Nenhum dado sobre encontrado.</p>
+        {% endif %}
     </div>
-  </div>
-  
+    </div>
+
+    <!-- Resume Section Start -->
+
+</section>
