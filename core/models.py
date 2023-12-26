@@ -29,8 +29,17 @@ class Documento(Base):
     
     
 class About(Base):
-    about = models.CharField('About', max_length=200)
-    description = models.TextField('Description', max_length= 300)
+    about = models.CharField('Cargo', max_length=200, blank=True)
+    description = models.TextField('Description', blank=True)
+    college = models.CharField('College', max_length = 200)
+    year = models.CharField('Year', max_length = 30)
+    class_description = models.TextField('Job', max_length = 500)
+
+    company = models.CharField('Company', max_length = 200 )
+    job_year = models.CharField('Year', max_length = 30)
+    job_description = models.TextField('Job', max_length = 500)
+
+
    
     class Meta:
         verbose_name = 'About'

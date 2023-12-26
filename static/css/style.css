@@ -51,7 +51,7 @@ section {
 
 html {
   font-size: 62.5%;
-  overflow: hidden;
+  overflow: scroll;
   /*ESCONDE O SCROLL*/
 }
 

@@ -1,78 +1,68 @@
 {% load static %}
 
-<!-- about section design -->
-
 <section class="about" id="about">
     {% if about %}
-    {% for a in about %}
     <div class="about-img">
         <img src="{% static 'images/about.png' %}" class="about-img">
     </div>
     <div class="about-content">
-
         <div class="row">
-            <div class="about-content">
-                <h2 class="heading">About <span>Me</span></h2>
-                <h3>Fullstack Developer!</h3>
-                <p>{{ a.description }}</p>
+            <div class="col-lg-12">
+                <div class="about-content">
+                    <h2 class="heading">About <span>Me</span></h2>
+                    <h3>{{ about.0.about }}</h3>
+                    <p>{{ about.0.description }}</p>
+                </div>
             </div>
+        </div>
 
-            <div id="resume" class="section-padding">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="education wow fadeInRight" data-wow-delay="0.3s">
-                                <ul class="timeline">
-                                    <li>
-                                        <i class="icon-graduation"></i>
-                                        <h2 class="timelin-title">Education</h2>
-                                    </li>
-                                    <li>
-                                        <div class="content-text">
-                                            <h3 class="line-title">Bsc In CSE - Yale University</h3>
-                                            <span>2012 - 2016</span>
-                                            <p class="line-text">Expenses as material breeding insisted building to in.
-                                                Continual so distrusts pronounce by unwilling listening. Thing do taste
-                                                on
-                                                we
-                                                manor.</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+        <div id="resume" class="section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="education wow fadeInRight" data-wow-delay="0.3s">
+                            <ul class="timeline">
+                                <li>
+                                    <i class="icon-graduation"></i>
+                                    <h2 class="timelin-title">Education</h2>
+                                </li>
+                                {% for a in about %}
+                                <li>
+                                    <div class="content-text">
+                                        <h3 class="line-title">{{ a.college }}</h3>
+                                        <span>{{ a.year }}</span>
+                                        <p class="line-text">{{ a.class_description }}</p>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="experience wow fadeInRight" data-wow-delay="0.6s">
-                                <ul class="timeline">
-                                    <li>
-                                        <i class="icon-briefcase"></i>
-                                        <h2 class="timelin-title">Experience</h2>
-                                    </li>
-                                    <li>
-                                        <div class="content-text">
-                                            <h3 class="line-title">Art Director - Tesla Inc.</h3>
-                                            <span>Jan 2018 - Present</span>
-                                            <p class="line-text">Expenses as material breeding insisted building to in.
-                                                Continual so distrusts pronounce by unwilling listening. Thing do taste
-                                                on
-                                                we
-                                                manor.</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="experience wow fadeInRight" data-wow-delay="0.6s">
+                            <ul class="timeline">
+                                <li>
+                                    <i class="icon-briefcase"></i>
+                                    <h2 class="timelin-title">Experience</h2>
+                                </li>
+                                {% for a in about %}
+                                <li>
+                                    <div class="content-text">
+                                        <h3 class="line-title">{{ a.company }}</h3>
+                                        <span>{{ a.job_year }}</span>
+                                        <p class="line-text">{{ a.job_description }}</p>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        {% endfor %}
-        {% else %}
-        <p>Nenhum dado sobre encontrado.</p>
-        {% endif %}
-    </div>
     </div>
 
-    <!-- Resume Section Start -->
-
+    {% else %}
+    <p>Nenhum dado encontrado.</p>
+    {% endif %}
 </section>
