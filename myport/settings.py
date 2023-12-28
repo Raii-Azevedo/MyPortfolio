@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-u09vljgtlrbm=*im(=s$u3as=&o&^4if%qxu+=a17h2c&q4t*9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -86,13 +86,11 @@ WSGI_APPLICATION = 'myport.wsgi.application'
     }
 }'''
 
-'''DATABASES = {
-    'default': dj_database_url.config(
-        conn_max_age=600,
-    ),
-}'''
-
 DATABASES = {
+    'default': dj_database_url.parse(),
+}
+
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'myport',
@@ -104,7 +102,7 @@ DATABASES = {
             'unix_socket': '/var/run/mysqld/mysqld.sock',
         },
     }
-}
+}'''
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
