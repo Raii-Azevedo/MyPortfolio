@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,21 +79,32 @@ WSGI_APPLICATION = 'myport.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
+}'''
 
 '''DATABASES = {
-    'engine': 'django.backends.mysql',
-    'name': 'myport',
-    'user': 'raissa',
-    'password': '*******',
-    'host': 'localhost',
-    'port': '3306',
+    'default': dj_database_url.config(
+        conn_max_age=600,
+    ),
 }'''
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'myport',
+        'USER': 'raissa',
+        'PASSWORD': 'R@issinha92',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+            'unix_socket': '/var/run/mysqld/mysqld.sock',
+        },
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -147,3 +159,6 @@ CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 # E-MAIL CONFIGURATION
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+LOGOUT_REDIRECT_URL = 'index'

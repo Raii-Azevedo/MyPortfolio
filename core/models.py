@@ -26,7 +26,18 @@ class Documento(Base):
 
     def __str__(self):
         return f'Documento {self.id}'
-    
+
+class Home(Base):
+
+    short = models.CharField('Cargo', max_length=300)
+
+    class Meta:
+        verbose_name = 'Home'
+        verbose_name_plural = 'Homes'
+
+    def __str__(self):
+        return self.home
+
     
 class About(Base):
     about = models.CharField('Cargo', max_length=200, blank=True)
@@ -50,6 +61,12 @@ class About(Base):
     
     
 class Service (Base):
+    ICON_CHOICES = (
+        ('bx-code-alt', 'Web' ),
+        ('bx-line-chart', 'Análise'),
+        ('bxs-dashboard', 'Dashboard'),
+    )
+    icone = models.CharField('Icone', max_length=15, choices=ICON_CHOICES)
     service = models.CharField('Service', max_length = 200)
     service_desc = models.TextField('Description', max_length = 300)
 

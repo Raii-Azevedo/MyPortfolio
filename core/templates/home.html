@@ -2,13 +2,13 @@
 
 <!-- home section design -->
 <section class="home" id="home">
+    {% if home %}
+    {% for h in home %}
     <div class="home-content">
         <h3>Hello, i'm</h3>
         <h1>Raíssa Azevedo</h1>
         <h3>and i am a <span class="multiple-text"></span></h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, ipsum numquam! At, reiciendis dolor
-            cupiditate maiores provident qui voluptas amet nobis pariatur porro quidem exercitationem itaque sequi
-            illo cumque tenetur.</p>
+        <p>{{ h.short }}</p>
         <div class="social-media">
             <a href="https://www.linkedin.com/in/rai-azevedo/" target="_blank"><i class='bx bxl-linkedin'></i></a>
             <a href="https://github.com/Raii-Azevedo" target="_blank"><i class='bx bxl-github'></i></a>
@@ -24,4 +24,8 @@
     <div class="home-img">
         <img src="{% static 'images/home.png' %}" alt="">
     </div>
+    {% endfor %}
+    {% else %}
+    <p>Nenhum dado encontrado.</p>
+    {% endif %}
 </section>
