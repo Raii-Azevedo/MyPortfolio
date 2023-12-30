@@ -86,11 +86,11 @@ WSGI_APPLICATION = 'myport.wsgi.application'
     }
 }'''
 
-DATABASES = {
-    'default': dj_database_url.parse(),
-}
-
 '''DATABASES = {
+    'default': dj_database_url.parse(),
+}'''
+
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'myport',
@@ -102,7 +102,8 @@ DATABASES = {
             'unix_socket': '/var/run/mysqld/mysqld.sock',
         },
     }
-}'''
+}
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
