@@ -1,45 +1,42 @@
-# Use a imagem oficial do Python
 ARG PYTHON_VERSION=3.10-slim-bullseye
+
 FROM python:${PYTHON_VERSION}
 
-# Configurações do Python
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Instalação de dependências do sistema necessárias
+# Instalar dependências do MySQL client, pkg-config, gcc e dependências de compilação para Pillow e django-stdimage
 RUN apt-get update && apt-get install -y \
     libpq-dev \
+    default-libmysqlclient-dev \
+    pkg-config \
+    gcc \
     libjpeg-dev \
     zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Criação e configuração do diretório de trabalho
+# Instalar o pkg-config
+RUN apt-get update && apt-get install -y pkg-config
+
 RUN mkdir -p /code
+
 WORKDIR /code
 
-# Copia o arquivo de requisitos para o contêiner
 COPY requirements.txt /tmp/requirements.txt
-
-# Instalação das dependências do projeto
 RUN set -ex && \
     pip install --upgrade pip && \
     pip install -r /tmp/requirements.txt && \
     rm -rf /root/.cache/
 
-# Copia o código-fonte para o contêiner
+# Instalar o django-stdimage
+RUN pip install django-stdimage
+
 COPY . /code
 
-# Configuração do segredo da aplicação (não use um valor fixo em produção)
 ENV SECRET_KEY "6PaBxqj2xoiEOcG5aCAvd5bPztF4QT8P388wAeoV7p8EW9lbYV"
-
-# Executa as migrações do Django
-RUN python manage.py migrate
-
-# Executa a coleta estática
+# Executar a coleta estática após instalar o django-stdimage
 RUN python manage.py collectstatic --noinput
 
-# Exposição da porta
 EXPOSE 8000
 
-# Comando para iniciar o servidor Gunicorn
 CMD ["gunicorn", "--bind", ":8000", "--workers", "2", "myport.wsgi"]
