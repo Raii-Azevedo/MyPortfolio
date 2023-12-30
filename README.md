@@ -35,8 +35,9 @@ Aqui estão as tecnologias utilizadas nesse projeto:
       - Django==4.1.10
       - django-bootstrap4==23.2
       - django-ckeditor==6.7.0
-      - django-js-asset==2.1.0
-      - django-stdimage==6.0.1
+      - django-appconf==1.0.6 
+      - django-imagekit==5.0.0 
+      - pilkit==3.0
       - gunicorn==21.2.0
       - mysqlclient==2.2.1 --global-option=build_ext --global-option="--mysql-config=/path/to/mysql_config"
       - Pillow==9.5.0
@@ -50,7 +51,6 @@ Aqui estão as tecnologias utilizadas nesse projeto:
       - wadllib==1.3.6
       - whitenoise==6.6.0
 
- 
  
 ## Authors
  
