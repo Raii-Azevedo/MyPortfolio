@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
-from stdimage import StdImageField
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import User
@@ -81,8 +82,13 @@ class Service (Base):
 class Projects (Base):
     project = models.CharField('Project Name', max_length = 200)
     project_desc = models.TextField('Project', max_length = 300)
-    proj_img = StdImageField('Imagem', upload_to=get_file_path, variations={'thumb': {'width': 480, 'height': 480, 'crop': True}})
-
+    
+    proj_img = ProcessedImageField(upload_to=get_file_path,
+                                   processors=[ResizeToFill(480, 480)],
+                                   format='PNG',
+                                   options={'quality': 90},
+                                   verbose_name='Imagem')
+   
     class Meta:
         verbose_name = 'Project'
         verbose_name_plural = 'Projects'
