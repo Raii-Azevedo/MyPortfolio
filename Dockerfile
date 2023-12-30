@@ -5,10 +5,12 @@ FROM python:${PYTHON_VERSION}
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Instalar dependências do MySQL client
+# Instalar dependências do MySQL client, pkg-config e gcc
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     default-libmysqlclient-dev \
+    pkg-config \
+    gcc \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /code
