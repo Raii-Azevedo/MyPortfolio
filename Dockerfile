@@ -5,7 +5,7 @@ FROM python:${PYTHON_VERSION}
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Instalar dependências do MySQL client, pkg-config, gcc e dependências de compilação para Pillow e django-stdimage
+# Instalar dependências do MySQL client, pkg-config, gcc, libmysqlclient-dev e dependências de compilação para Pillow e django-stdimage
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     default-libmysqlclient-dev \
@@ -14,9 +14,6 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
-
-# Instalar o pkg-config
-RUN apt-get update && apt-get install -y pkg-config
 
 RUN mkdir -p /code
 
@@ -27,14 +24,9 @@ RUN set -ex && \
     pip install --upgrade pip && \
     pip install -r /tmp/requirements.txt && \
     rm -rf /root/.cache/
-
-# Instalar o django-stdimage
-RUN pip install django-stdimage
-
 COPY . /code
 
-ENV SECRET_KEY "6PaBxqj2xoiEOcG5aCAvd5bPztF4QT8P388wAeoV7p8EW9lbYV"
-# Executar a coleta estática após instalar o django-stdimage
+ENV SECRET_KEY "zORolOsBgB3RJk3aqdRuH1Gen4RELLqnI2XthxUrCNh1tgkrFP"
 RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
