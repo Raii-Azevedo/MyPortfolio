@@ -5,15 +5,16 @@ FROM python:${PYTHON_VERSION}
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Instalar dependências do MySQL client, pkg-config, gcc, libmysqlclient-dev e dependências de compilação para Pillow e django-stdimage
+# Instalação do pkg-config e outras dependências
 RUN apt-get update && apt-get install -y \
-    libpq-dev \
-    default-libmysqlclient-dev \
     pkg-config \
+    libpq-dev \
     gcc \
-    libjpeg-dev \
-    zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
+
+# Variáveis de ambiente para o MySQL
+ENV MYSQLCLIENT_CFLAGS="-I/usr/include/mysql"
+ENV MYSQLCLIENT_LDFLAGS="-L/usr/lib/x86_64-linux-gnu -lmysqlclient"
 
 RUN mkdir -p /code
 
@@ -26,7 +27,7 @@ RUN set -ex && \
     rm -rf /root/.cache/
 COPY . /code
 
-ENV SECRET_KEY "zORolOsBgB3RJk3aqdRuH1Gen4RELLqnI2XthxUrCNh1tgkrFP"
+ENV SECRET_KEY "E9yyP6b8jbrSAxA9tIjlT8v3PRRsPTX47fGKPCwklIL2TiU30K"
 RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
