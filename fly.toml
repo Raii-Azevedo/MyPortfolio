@@ -3,7 +3,7 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "myportifolio"
+app = "myportfolio"
 primary_region = "gru"
 console_command = "/code/manage.py shell"
 
