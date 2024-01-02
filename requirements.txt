@@ -9,7 +9,6 @@ pilkit==3.0
 gunicorn==21.2.0
 mysqlclient==2.2.1 --global-option=build_ext --global-option="--mysql-config=/path/to/mysql_config"
 Pillow==9.5.0
-psycopg2-binary==2.9.6
 PyMySQL==1.1.0
 reportlab==3.6.8
 requests==2.31.0
