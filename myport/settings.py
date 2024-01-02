@@ -93,10 +93,10 @@ WSGI_APPLICATION = 'myport.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'A5cFDBEg3C4Ef4a-4fFcCgCD34g1dF5b',
-        'HOST': 'viaduct.proxy.rlwy.net',
+        'NAME': 'vercel',
+        'USER': 'default',
+        'PASSWORD': 'SbyPnomN3e5C',
+        'HOST': 'ep-noisy-frog-92408345-pooler.us-east-1.postgres.vercel-storage.com',
         'PORT': '23061',
     }
 }
