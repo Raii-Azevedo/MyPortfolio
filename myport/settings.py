@@ -90,15 +90,14 @@ WSGI_APPLICATION = 'myport.wsgi.application'
     'default': dj_database_url.parse(),
 }'''
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'myport',
-        'USER': 'raissa',
-        'PASSWORD': 'R@issinha92',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': 'portfolio',
+        'USER': 'postgres',
+        'PASSWORD': 'A5cFDBEg3C4Ef4a-4fFcCgCD34g1dF5b',
+        'HOST': 'viaduct.proxy.rlwy.net',
+        'PORT': '23061',
     }
 }
 # Password validation
