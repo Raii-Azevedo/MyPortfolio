@@ -93,10 +93,10 @@ WSGI_APPLICATION = 'myport.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'portfolio',
-        'USER': 'jhvajlyp',
-        'PASSWORD': 'CehW85OWn24S_NuiTKwifWew7n583n3H',
-        'HOST': 'postgres://jhvajlyp:CehW85OWn24S_NuiTKwifWew7n583n3H@tuffi.db.elephantsql.com/jhvajlyp',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'A5cFDBEg3C4Ef4a-4fFcCgCD34g1dF5b',
+        'HOST': 'viaduct.proxy.rlwy.net',
         'PORT': '23061',
     }
 }
