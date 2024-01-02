@@ -1,6 +1,6 @@
 dj-database-url==0.5.0
 dj-static==0.0.6
-Django==3.10.12
+Django==4.0.2
 django-bootstrap4==23.2
 django-ckeditor==6.7.0
 django-appconf==1.0.6 
