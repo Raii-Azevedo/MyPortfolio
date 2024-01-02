@@ -208,6 +208,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
+  list-style-type: none; 
   gap: 2rem;
   color:#fff;
   background: linear-gradient(21deg,
