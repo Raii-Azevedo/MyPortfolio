@@ -251,6 +251,7 @@ span {
   font-size: 1.5rem;
   color: #fff;
   margin: 2rem 0 3rem;
+  list-style-type: none; 
 }
 
 
