@@ -30,8 +30,10 @@ class Documento(Base):
 
 class Home(Base):
 
-    class Home(models.Model):
-        home = models.CharField(max_length=255)  # Adjust the field type as per your actual model
+    short = models.CharField('Descrição', max_length=300)
+
+    class Meta:
+        verbose_name = 'Home'
 
     def __str__(self):
         return self.home
@@ -47,7 +49,6 @@ class About(Base):
     company = models.CharField('Company', max_length = 200 )
     job_year = models.CharField('Year', max_length = 30)
     job_description = models.TextField('Job', max_length = 500)
-
 
    
     class Meta:
