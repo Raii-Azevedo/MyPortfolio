@@ -209,6 +209,7 @@ span {
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  color:#fff;
   background: linear-gradient(21deg,
       rgba(51, 36, 65, 255) 68%,
       rgba(255, 206, 196, 0.5) 125%),
@@ -247,7 +248,7 @@ span {
 }
 
 .about-content .content-text .line-text p {
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: #fff;
   margin: 2rem 0 3rem;
 }
