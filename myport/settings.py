@@ -93,10 +93,10 @@ WSGI_APPLICATION = 'myport.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'vercel',
-        'USER': 'default',
-        'PASSWORD': 'SbyPnomN3e5C',
-        'HOST': 'ep-noisy-frog-92408345-pooler.us-east-1.postgres.vercel-storage.com',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'A5cFDBEg3C4Ef4a-4fFcCgCD34g1dF5b',
+        'HOST': 'viaduct.proxy.rlwy.net',
         'PORT': '23061',
     }
 }
@@ -133,7 +133,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_URL = '/static/'
