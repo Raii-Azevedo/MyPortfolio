@@ -209,6 +209,7 @@ span {
   justify-content: center;
   align-items: center;
   list-style-type: none; 
+  list-style: none;
   gap: 2rem;
   color:#fff;
   background: linear-gradient(21deg,
