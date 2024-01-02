@@ -34,9 +34,10 @@ class Home(Base):
 
     class Meta:
         verbose_name = 'Home'
+        verbose_name_plural = 'Homes'
 
     def __str__(self):
-        return self.home
+        return self.short
 
     
 class About(Base):
