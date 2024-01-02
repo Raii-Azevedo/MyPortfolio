@@ -30,11 +30,8 @@ class Documento(Base):
 
 class Home(Base):
 
-    short = models.CharField('Cargo', max_length=300)
-
-    class Meta:
-        verbose_name = 'Home'
-        verbose_name_plural = 'Homes'
+    class Home(models.Model):
+        home = models.CharField(max_length=255)  # Adjust the field type as per your actual model
 
     def __str__(self):
         return self.home
