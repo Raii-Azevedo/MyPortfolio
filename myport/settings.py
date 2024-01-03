@@ -93,11 +93,11 @@ WSGI_APPLICATION = 'myport.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
+        'NAME': 'bd_teste',
         'USER': 'postgres',
-        'PASSWORD': '*e*BCeGGDgdfBc62f21DAC5*e4eb-deg',
-        'HOST': 'roundhouse.proxy.rlwy.net',
-        'PORT': '19462',
+        'PASSWORD': 'Raissinha92',
+        'HOST': 'portfolio.cxco4igaq9s3.us-east-2.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 # Password validation
