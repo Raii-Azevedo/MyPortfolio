@@ -1,2 +1,2 @@
-gunicorn myport.wsgi:application
+myport.wsgi:application
 
