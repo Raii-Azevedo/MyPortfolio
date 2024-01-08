@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.vercel.app', 'now.sh', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -87,11 +87,13 @@ WSGI_APPLICATION = 'myport.wsgi.application'
     }
 }'''
 
-'''DATABASES = {
-    'default': dj_database_url.parse(),
-}'''
-
 DATABASES = {
+    'default': dj_database_url.parse(
+        os.environ.get('DATABASE_URL'), 
+        conn_max_age=600),
+}
+
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'bd_teste',
@@ -100,7 +102,7 @@ DATABASES = {
         'HOST': 'portfolio.cxco4igaq9s3.us-east-2.rds.amazonaws.com',
         'PORT': '5432',
     }
-}
+}'''
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -129,7 +131,7 @@ TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False # Como ta usando Timezone America/Sao_Paulo, para evitar erro.
 
 
 # Static files (CSS, JavaScript, Images)
