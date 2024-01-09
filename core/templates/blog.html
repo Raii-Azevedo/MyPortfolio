@@ -1,4 +1,6 @@
 {% load static %}
+{% load markdown %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -30,6 +32,8 @@
         <div id="post-info" class="subhead"></div>
     </div>
     {% block content %}
+    {{ content|markdown }}
+
     <!-- GPAGE CONTENT-->
     <div class="content">
         {% for c in content %}
