@@ -3,19 +3,27 @@
 {% block content %}
 
 <!-- HOME Content -->
-{% include 'home.html' %}
+{% if home %}
+    {% include 'home.html' %}
+{% endif %}
 <!-- END of HOME Content -->
 
 <!-- ABOUT Content -->
-{% include 'about.html' %}
+{% if about %}
+    {% include 'about.html' %}
+{% endif %}
 <!-- END of ABOUT Content -->
 
 <!-- SERVICE Content -->
-{% include 'service.html' %}
+{% if service %}
+    {% include 'service.html' %}
+{% endif %}
 <!-- END of SERVICE Content -->
 
 <!-- PORTFOLIO Content -->
-{% include 'portfolio.html' %}
+{% if project %}
+    {% include 'portfolio.html' %}
+{% endif %}
 <!-- END of PORTFOLIO Content -->
 
 <!-- CONTACT Content -->
