@@ -1,6 +1,7 @@
 {% load static %}
 
 <!-- home section design -->
+{% block content %}
 <section class="home" id="home">
     {% if home %}
     {% for h in home %}
@@ -29,3 +30,4 @@
     <p>Nenhum dado encontrado.</p>
     {% endif %}
 </section>
+{% endblock %}
