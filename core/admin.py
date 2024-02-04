@@ -1,11 +1,11 @@
 from django.contrib import admin
-from core.models import Documento, About, Service, Projects, Post,Home
+from .models import Home, About, Services, Experience, Portfolio, Jobs
 
 # Register your models here.
 
-admin.site.register(About)
-admin.site.register(Documento)
-admin.site.register(Service)
-admin.site.register(Projects)
-admin.site.register(Post)
 admin.site.register(Home)
+admin.site.register(About)
+admin.site.register(Experience)
+admin.site.register(Jobs)
+admin.site.register(Services)
+admin.site.register(Portfolio)

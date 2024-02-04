@@ -1,27 +1,334 @@
-{% extends 'base.html' %}
 {% load static %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- HOME Content -->
-{% include 'home.html' %}
-<!-- END of HOME Content -->
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raíssa Azevedo</title>
 
-<!-- ABOUT Content -->
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-{% include 'about.html' %}
-<!-- END of ABOUT Content -->
+    <!-- custom css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
-<!-- SERVICE Content -->
-{% include 'service.html' %}
-<!-- END of SERVICE Content -->
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<!-- PORTFOLIO Content -->
-{% include 'portfolio.html' %}
+    <!--Favicon-->
+    <link rel="shortcut icon" href="{% static 'images/Raissa Azevedo.png' %}" type="image/x-icon">
+</head>
 
-<!-- END of PORTFOLIO Content -->
+<body>
+    <!-- header design -->
+    {% csrf_token %}
+    <header class="header">
+        <a href="#home"><img src="{% static 'images/rai-logo.png' %}" height="40" alt=""></a>
 
-<!-- CONTACT Content -->
-{% include 'contact.html' %}
-<!-- END of CONTACT Content -->
+        <i class='bx bx-menu' id="menu-icon"></i>
 
-{% endblock %}
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3>Hello, i'm</h3>
+            <h1>Raíssa Azevedo</h1>
+            <h3>and i am a <span class="multiple-text"></span></h3>
+            {% if home %}
+            {% for h in home %}
+            <p>{{ h.resume }}</p>
+            <div class="social-media">
+                <a href="https://www.linkedin.com/in/rai-azevedo/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://github.com/Raii-Azevedo" target="_blank"><i class='bx bxl-github'></i></a>
+                <a href="https://www.behance.net/raissa-azevedo" target="_blank"><i class='bx bxl-behance'></i></a>
+                <a href="https://www.instagram.com/raiissa.azevedo/" target="_blank"><i
+                        class='bx bxl-instagram'></i></a>
+                <a href="https://www.youtube.com/channel/UCEKsppYChQTSNh-OMHgrdWQ" target="_blank"><i
+                        class='bx bxl-youtube'></i></a>
+            </div>
+
+            <a type="button" target="_blank" class="round-btn"
+                href="https://www.linkedin.com/in/rai-azevedo/">Resume</a>
+        </div>
+
+        <div class="home-img">
+            <img src="{% static 'images/home.png' %}" alt="">
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>Nenhum dado encontrado.</p>
+        {% endif %}
+    </section>
+    <!--END of HOME-->
+
+    <!-- about section design -->
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="{% static 'images/about.png' %}" class="about-img">
+        </div>
+        {% for a in about %}
+        <div class="about-content">
+            <h2 class="heading">About <span>Me</span></h2>
+            <h3>{{ a.expertise }}</h3>
+            <p>{{ a.description }}</p>
+            {% endfor %}
+            <br><br>
+
+            <div id="resume" class="section-padding">
+                <div class="container">
+                    <div class="row">
+                        <!--Education Stuff-->
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="education wow fadeInRight" data-wow-delay="0.3s">
+                                <ul class="timeline">
+                                    <li class="timeline-item">
+                                        <h2 class="timelin-title">EDUCATION</h2>
+                                        {% for e in experience %}
+                                        <div class="content-text">
+                                            <h4 class="line-title">{{ e.education }}</h4>
+                                            <span>{{ e.period }}</span>
+                                            <p class="line-text">{{ e.description }}</p>
+                                        </div>
+                                        {% endfor %}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Jobs Stuff -->
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="jobs wow fadeInRight" data-wow-delay="0.9s">
+                                <ul class="timeline">
+                                    <li class="timeline-item">
+                                        <h2 class="timelin-title">EXPERIENCE</h2>
+                                        {% for job in jobs %}
+                                        <div class="content-text">
+                                            <h4 class="line-title">{{ job.cargo }}</h4>
+                                            <h5 class="line-title">{{ job.company }}</h5>
+                                            <span>{{ job.period }}</span>
+                                            <p class="line-text">{{ job.description }}</p>
+                                        </div>
+                                        {% endfor %}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </section>
+    <!-- END of ABOUT design -->
+    <!-- services section design -->
+    <section class="services" id="services">
+        <h2 class="heading">My <span>Services</span></h2>
+
+        <div class="services-container">
+
+            <div class="services-box">
+                <i class='bx bx-code-alt'></i>
+                <h3>Web Development</h3>
+                <p>With experience in web development, I master essential technologies such as HTML, CSS and JavaScript,
+                    providing engaging and interactive visual interfaces. Furthermore, I have expertise in the Django
+                    Framework, efficiently applying back-end concepts to create robust and scalable web solutions.</p>
+            </div>
+
+            <div class="services-box">
+                <i class='bx bx-line-chart'></i>
+                <h3>Data Analysis</h3>
+                <p>With experience in ETL (Extract, Transform, Load) data analysis, I highlight skills in efficiently
+                    extracting data from various sources, transforming it into useful formats and loading it into
+                    systems, facilitating informed decision-making through valuable insights.</p>
+            </div>
+
+            <div class="services-box">
+                <i class='bx bxs-dashboard'></i>
+                <h3>Dashboards</h3>
+                <p>Extensive experience in developing dashboards using tools such as Power BI and Excel. Specialized in
+                    data analysis, implementing ETL processes, and creating efficient solutions for visualizing and
+                    interpreting information, providing valuable insights.</p>
+            </div>
+        </div>
+
+    </section>
+    <!--END of SERVICES-->
+
+    <!-- portfolio section design -->
+    <section class="portfolio" id="portfolio">
+        <h2 class="heading">Latest <span>Projects</span></h2>
+
+        <div class="portfolio-container">
+            {% for t in portfolio %}
+            <div class="portfolio-box">
+                <img src="{{ t.image.url }}">
+                <div class="portfolio-layer">
+                    <h4>{{ t.title }}</h4>
+                    <p>{{ t.description }}</p>
+                    <a href="{{ t.link }}" target="_blank"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- portfolio section design -->
+
+    <!-- contact section design -->
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Me!</span></h2>
+
+        <form action="#">
+            <div class="input-box">
+                <input type="text" placeholder="Full Name">
+                <input type="email" placeholder="E-mail Adress">
+            </div>
+
+            <div class="input-box">
+                <input type="number" placeholder="Mobile Number">
+                <input type="text" placeholder="E-mail Subject">
+            </div>
+
+            <textarea name="" id="" cols="30" rows="10" placeholder="Write your message here"></textarea>
+            <input type="submit" value="Send Message" class="service-btn">
+        </form>
+
+        <!-- GAMBIARRA DO footer design -->
+
+        <br><br><br><br><br><br><br><br><br><br>
+
+        <!-- footer design -->
+
+
+
+
+    <!-- footer design -->
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p>@ 2024 Raíssa Azevedo, Inc</p>
+        </div>
+
+        <a href="#home" class="foot-btn"><i class='bx bxs-up-arrow-circle'></i></a>
+
+        <div class="footer-iconTop">
+            <a href="https://www.linkedin.com/in/rai-azevedo/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://github.com/Raii-Azevedo" target="_blank"><i class='bx bxl-github'></i></a>
+            <a href="https://www.instagram.com/raiissa.azevedo/" target="_blank"><i class='bx bxl-instagram'></i></a>
+            <a href="https://www.youtube.com/channel/UCEKsppYChQTSNh-OMHgrdWQ" target="_blank"><i
+                    class='bx bxl-youtube'></i></a>
+        </div>
+
+    </footer>
+
+    </section>
+
+    <!-- scroll reveal -->
+    <script src="https://unpkg.com/scrollreveal@4.0.7/dist/scrollreveal.min.js"></script>
+
+    <!-- typed js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- custom js -->
+    <script>
+        //==================== toggle icon navbar ====================
+        let menuIcon = document.querySelector('#menu-icon');
+        let navbar = document.querySelector('.navbar');
+
+        menuIcon.onclick = () => {
+            menuIcon.classList.toggle('bx-x');
+            navbar.classList.toggle('active');
+        };
+
+
+        /*==================== Navbar "active" effect while scrolling ====================*/
+        let sections = document.querySelectorAll('section');
+        let navLinks = document.querySelectorAll('header nav a');
+
+        window.onscroll = () => {
+            sections.forEach(sec => {
+                let top = window.scrollY;
+                let offset = sec.offsetTop - 150;
+                let height = sec.offsetHeight;
+                let id = sec.getAttribute('id');
+
+                if (top >= offset && top < offset + height) {
+                    navLinks.forEach(links => {
+                        links.classList.remove('active');
+                        document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+
+                    });
+                };
+            });
+            /*==================== Sticky Navbar ====================*/
+
+            let header = document.querySelector('header')
+
+            header.classList.toggle('sticky', window.scrollY > 100)
+
+
+            /*==================== remove toggle icon and navbar when click navbar link (scroll) ====================*/
+            menuIcon.classList.remove('bx-x');
+            navbar.classList.remove('active');
+        };
+
+
+        /*==================== scroll reveal ====================*/
+
+        ScrollReveal({
+            // reset: true,
+            distance: '80px',
+            duration: 2000,
+            delay: 200
+        });
+
+        ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
+
+        ScrollReveal().reveal('.home-img, .services-container, .portfolio-box, .contact form', {
+            origin: 'bottom'
+        });
+
+        ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left' });
+
+        ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
+
+
+
+        /*==================== typed js ====================*/
+        const typed = new Typed('.multiple-text', {
+            strings: ['Fullstack Web Developer', 'Data Analyst', 'Blogger'],
+            typeSpeed: 100,
+            backSpeed: 100,
+            backDelay: 1000,
+            loop: true
+        });
+
+    </script>
+    <!-- Popper.js -->
+    <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+
+
+    <!--Modal-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-Ppfxm0F1l1WJDkXYCea8JbG3bo5p3R83NXe8HMzvDcGkInyl4Uen+hjQi0tnD2vj"
+        crossorigin="anonymous"></script>
+    <!-- Scripts do Bootstrap e jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pzjw8/ubf1BLD+alQsPiC5OvAe1taCV5dVoHlWCBRUeRJNOh1qZ9UDtLsR6f"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

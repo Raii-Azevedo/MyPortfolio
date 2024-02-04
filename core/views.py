@@ -1,14 +1,21 @@
 from django.shortcuts import render
-from .models import Post, About  
+from .models import Home, About, Experience, Portfolio, Services, Jobs
 
-# Create your views here.
 def index(request):
-    abouts = About.objects.all()
-    return render(request, 'index.html', {'about': abouts})
+    home = Home.objects.all()
+    about = About.objects.all()
+    experience = Experience.objects.all()
+    portfolio = Portfolio.objects.all()
+    services = Services.objects.all()
+    jobs = Jobs.objects.all()  # Adicionando esta linha
 
-def blog(request):
-    posts = Post.objects.all()
-    return render(request, 'blog.html', {'content': posts})
+    context = {
+        'home': home,
+        'about': about,
+        'experience': experience,
+        'jobs': jobs,  # Corrigindo o nome da chave e associando o valor
+        'portfolio': portfolio,
+        'services': services,
+    }
 
-def about_view(request):
-    return render(request, 'aboutC.html')
+    return render(request, 'index.html', context)
