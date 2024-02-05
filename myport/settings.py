@@ -95,8 +95,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': 'D23G1*B54gFa-Dcg-AAae3a-a4aDAE3c',
-        'HOST': 'monorail.proxy.rlwy.net',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': '51368',
     }
 }'''
@@ -156,6 +156,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 LOGOUT_REDIRECT_URL = 'index'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://www.web-production-09c80.up.railway.app',
-    'https://web-production-09c80.up.railway.app',
+    'https://web-production-23395.up.railway.app/',
 ]
