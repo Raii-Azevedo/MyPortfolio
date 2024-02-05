@@ -156,5 +156,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 LOGOUT_REDIRECT_URL = 'index'
 
 CSRF_TRUSTED_ORIGINS = [
+    'https://www.web-production-23395.up.railway.app/',
     'https://web-production-23395.up.railway.app/',
 ]
