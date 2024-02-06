@@ -26,7 +26,7 @@ Aqui estão as tecnologias utilizadas nesse projeto:
 ## Links
  
   - Repository: https://github.com/Raii-Azevedo/MyPortifolio
-  - Deploy: 
+  - Deploy: https://raissa-azevedo.up.railway.app/
  
 ## Requirements
  
