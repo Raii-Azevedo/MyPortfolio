@@ -1,6 +1,7 @@
 ![MyPort](https://github.com/Raii-Azevedo/MyPortifolio/blob/master/MyPort.gif)
  
 ## Portfólio
+[CLICK HERE](https://raissa-azevedo.up.railway.app/)
  
 - Protótipo do meu portfólio pessoal, onde indico as tecnologias que domino e disponibilizo minhas redes sociais e meu curriculo.
 - Prototype of my personal portfolio, where I indicate the technologies that I master and make available my social networks and my curriculum.
@@ -26,7 +27,7 @@ Aqui estão as tecnologias utilizadas nesse projeto:
 ## Links
  
   - Repository: https://github.com/Raii-Azevedo/MyPortifolio
-  - Deploy: 
+  - Deploy: https://raissa-azevedo.up.railway.app/
  
 ## Requirements
  
