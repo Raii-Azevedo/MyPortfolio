@@ -1,12 +1,10 @@
 from django.shortcuts import render
 from .models import Home, About, Experience, Portfolio, Services, Jobs
 from django.http import HttpResponse
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from email.parser import BytesParser
-from email.policy import default
-import os
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.core.mail import send_mail
+
 
 
 
@@ -29,54 +27,28 @@ def index(request):
 
     return render(request, 'index.html', context)
 
-
-import os
-from django.http import HttpResponse
-from email.parser import BytesParser
-from email.policy import default
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-
-def receber_email(request):
+def enviar_email(request):
     if request.method == 'POST':
-        # Verificar se o cabeçalho Content-Type é application/json
-        content_type = request.headers.get('Content-Type', '')
-        if 'application/json' not in content_type:
-            return HttpResponse("Only JSON content type is supported", status=415)
+        full_name = request.POST.get('full_name')
+        email_address = request.POST.get('email_address')
+        mobile_number = request.POST.get('mobile_number')
+        email_subject = request.POST.get('email_subject')
+        message = request.POST.get('message')
 
-        try:
-            # Analisar o corpo da solicitação JSON para obter o e-mail
-            data = BytesParser(policy=default).parsebytes(request.body)
-            email_body = data.get_payload()
-            sender_email = data['From']
+        # Construa o conteúdo do e-mail
+        email_content = f"Nome: {full_name}\nE-mail: {email_address}\nNúmero de telefone: {mobile_number}\nAssunto: {email_subject}\nMensagem: {message}"
 
-            # Obter credenciais de e-mail do Gmail das variáveis de ambiente
-            gmail_user = os.environ.get('EMAIL_HOST_USER')
-            gmail_password = os.environ.get('EMAIL_HOST_PASSWORD')
+        # Envie o e-mail
+        send_mail(
+            subject='Novo contato do formulário de contato',
+            message=email_content,
+            from_email=email_address,
+            recipient_list=['rhaii.azevedo@gmail.com'],
+            fail_silently=False,
+        )
 
-            # Criar mensagem de e-mail
-            msg = MIMEMultipart()
-            msg['From'] = sender_email  # Usar o e-mail do remetente
-            msg['To'] = 'rhaii.azevedo@gmail.com'  # E-mail do destinatário no Gmail
-            msg['Subject'] = 'Assunto do e-mail'
-
-            # Corpo do e-mail
-            body = email_body
-            msg.attach(MIMEText(body, 'plain'))
-
-            # Conectar-se ao servidor SMTP do Gmail
-            server = smtplib.SMTP('smtp.gmail.com', 587)
-            server.starttls()
-            server.login(gmail_user, gmail_password)
-
-            # Enviar e-mail
-            text = msg.as_string()
-            server.sendmail(sender_email, 'rhaii.azevedo@gmail.com', text)
-            server.quit()
-
-            return HttpResponse("E-mail enviado com sucesso!", status=200)
-        except Exception as e:
-            return HttpResponse("Erro ao processar o e-mail: " + str(e), status=500)
+        # Retorne uma resposta ao cliente
+        return HttpResponse("O e-mail foi enviado com sucesso!")
     else:
-        return HttpResponse(status=405)
+        # Se a solicitação não for POST, retorne uma resposta de método não permitido
+        return HttpResponse("Método não permitido.", status=405)

@@ -189,20 +189,21 @@
     <section class="contact" id="contact">
         <h2 class="heading">Contact <span>Me!</span></h2>
 
-        <form action="#">
+        <form action="{% url 'enviar_email' %}" method="post">
             <div class="input-box">
                 <input type="text" name="full_name" placeholder="Full Name">
                 <input type="email" name="email_address" placeholder="E-mail Adress">
             </div>
-
+        
             <div class="input-box">
                 <input type="number" name="mobile_number" placeholder="Mobile Number">
                 <input type="text" name="email_subject" placeholder="E-mail Subject">
             </div>
-
+        
             <textarea name="message" cols="30" rows="10" placeholder="Write your message here"></textarea>
             <input type="submit" value="Send Message" class="service-btn">
         </form>
+        
 
         <!-- GAMBIARRA DO footer design -->
 
