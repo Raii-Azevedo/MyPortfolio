@@ -24,7 +24,7 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-def minha_view(request):
+def enviar_email(request):
     # Obtendo o token CSRF
     csrf_token = get_token(request)
     
