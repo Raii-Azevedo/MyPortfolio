@@ -30,6 +30,14 @@ def index(request):
     return render(request, 'index.html', context)
 
 
+import os
+from django.http import HttpResponse
+from email.parser import BytesParser
+from email.policy import default
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
 def receber_email(request):
     if request.method == 'POST':
         # Verificar se o cabeçalho Content-Type é application/json
@@ -43,14 +51,14 @@ def receber_email(request):
             email_body = data.get_payload()
             sender_email = data['From']
 
-            # Configurações de e-mail do Gmail
-            EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-            EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+            # Obter credenciais de e-mail do Gmail das variáveis de ambiente
+            gmail_user = os.environ.get('EMAIL_HOST_USER')
+            gmail_password = os.environ.get('EMAIL_HOST_PASSWORD')
 
             # Criar mensagem de e-mail
             msg = MIMEMultipart()
-            msg['From'] = gmail_user
-            msg['To'] = 'destinatario@gmail.com'  # E-mail do destinatário no Gmail
+            msg['From'] = sender_email  # Usar o e-mail do remetente
+            msg['To'] = 'rhaii.azevedo@gmail.com'  # E-mail do destinatário no Gmail
             msg['Subject'] = 'Assunto do e-mail'
 
             # Corpo do e-mail
@@ -64,7 +72,7 @@ def receber_email(request):
 
             # Enviar e-mail
             text = msg.as_string()
-            server.sendmail(gmail_user, 'destinatario@gmail.com', text)
+            server.sendmail(sender_email, 'rhaii.azevedo@gmail.com', text)
             server.quit()
 
             return HttpResponse("E-mail enviado com sucesso!", status=200)
