@@ -6,6 +6,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.parser import BytesParser
 from email.policy import default
+import os
 
 
 
@@ -43,8 +44,8 @@ def receber_email(request):
             sender_email = data['From']
 
             # Configurações de e-mail do Gmail
-            gmail_user = 'seu_email@gmail.com'
-            gmail_password = 'sua_senha'
+            EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+            EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
             # Criar mensagem de e-mail
             msg = MIMEMultipart()
