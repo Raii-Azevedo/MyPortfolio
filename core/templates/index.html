@@ -202,7 +202,7 @@
             </div>
         
             <textarea id="message" name="message" cols="30" rows="10" placeholder="Write your message here"></textarea>
-            <input type="submit" value="Send Message" class="service-btn" id="submitButton">
+            <input type="submit" value="Send Message" class="service-btn" id="submitButton" disabled>
         </form>
         
 
@@ -317,18 +317,22 @@
 
         /*==================== Contact Form ====================*/
 
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
-        // Verifica se os campos Nome e Assunto do email estão preenchidos
+        document.getElementById("contactForm").addEventListener("input", function() {
+        // Verifica se todos os campos estão preenchidos
         var fullName = document.getElementById("fullName").value.trim();
+        var emailAddress = document.getElementById("emailAddress").value.trim();
+        var mobileNumber = document.getElementById("mobileNumber").value.trim();
         var emailSubject = document.getElementById("emailSubject").value.trim();
+        var message = document.getElementById("message").value.trim();
 
-        if (fullName === "" || emailSubject === "") {
-            // Impede o envio do formulário se os campos não estiverem preenchidos
-            event.preventDefault();
-            alert("Please fill in Full Name and Email Subject fields.");
+        // Habilita ou desabilita o botão com base no preenchimento dos campos
+        var submitButton = document.getElementById("submitButton");
+        if (fullName !== "" && emailAddress !== "" && mobileNumber !== "" && emailSubject !== "" && message !== "") {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
         }
     });
-
     </script>
     <!-- Popper.js -->
     <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
