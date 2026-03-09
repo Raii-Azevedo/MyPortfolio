@@ -11,7 +11,6 @@ gunicorn==21.2.0
 Pillow
 psycopg2-binary
 PyMySQL==1.1.0.0
-reportlab==3.6.8
 requests==2.31.0
 responses==0.23.3
 sqlparse==0.4.1
