@@ -16,7 +16,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "raissa-azevedo.up.railway.app"
+]
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 
 # APPLICATIONS
@@ -159,7 +163,6 @@ LOGOUT_REDIRECT_URL = 'index'
 
 
 # CSRF
-
 CSRF_TRUSTED_ORIGINS = [
-    'https://web-production-23395.up.railway.app'
+    "https://raissa-azevedo.up.railway.app"
 ]
