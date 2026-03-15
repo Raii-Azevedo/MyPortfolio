@@ -1,4 +1,25 @@
-__Pycache__
-*.*~
-*.pyc 
-.idea
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Virtual Environment
+venv/
+.env
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Django
+staticfiles/
+media/
+
+# Logs
+*.log
