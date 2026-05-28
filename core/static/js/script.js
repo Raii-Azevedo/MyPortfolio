@@ -1,303 +1,189 @@
-/*==================== toggle icon navbar ====================*/
-let menuIcon = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
+const menuIcon = document.querySelector('#menu-icon');
+const navbar = document.querySelector('.navbar');
+const header = document.querySelector('.header');
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('header nav a');
 
-menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
-};
-
-
-/*==================== Navbar "active" effect while scrolling ====================*/
-let sections = document.querySelectorAll('section');
-let navLinks = document.querySelectorAll('header nav a');
-
-window.onscroll = () => {
-    sections.forEach(sec => {
-        let top = window.scrollY;
-        let offset = sec.offsetTop - 150;
-        let height = sec.offsetHeight;
-        let id = sec.getAttribute('id');
-
-        if (top >= offset && top < offset + height) {
-            navLinks.forEach(links => {
-                links.classList.remove('active');
-                let activeLink = document.querySelector('header nav a[href*=' + id + ']');
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
-            });
-        };
+if (menuIcon && navbar) {
+    menuIcon.addEventListener('click', () => {
+        menuIcon.classList.toggle('bx-x');
+        navbar.classList.toggle('active');
     });
-    /*==================== Sticky Navbar ====================*/
-
-    let header = document.querySelector('header');
-    if (header) {
-        header.classList.toggle('sticky', window.scrollY > 100);
-    }
-
-    /*==================== remove toggle icon and navbar when click navbar link (scroll) ====================*/
-    if (menuIcon && navbar) {
-        menuIcon.classList.remove('bx-x');
-        navbar.classList.remove('active');
-    }
-};
-
-
-/*==================== scroll reveal with error handling ====================*/
-if (typeof ScrollReveal !== 'undefined') {
-    ScrollReveal({
-        distance: '80px',
-        duration: 2000,
-        delay: 200,
-        reset: false // Set to false for better performance
-    });
-
-    ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
-    ScrollReveal().reveal('.home-img, .services-container, .portfolio-box, .contact form', { origin: 'bottom' });
-    ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left' });
-    ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
 }
 
+const updateNavigation = () => {
+    const scrollY = window.scrollY;
 
-/*==================== typed js with error handling ====================*/
+    if (header) {
+        header.classList.toggle('sticky', scrollY > 40);
+    }
+
+    sections.forEach((section) => {
+        const offset = section.offsetTop - 180;
+        const height = section.offsetHeight;
+        const id = section.getAttribute('id');
+
+        if (scrollY >= offset && scrollY < offset + height) {
+            navLinks.forEach((link) => link.classList.remove('active'));
+            const activeLink = document.querySelector(`header nav a[href="#${id}"]`);
+            if (activeLink) activeLink.classList.add('active');
+        }
+    });
+};
+
+window.addEventListener('scroll', updateNavigation);
+window.addEventListener('load', updateNavigation);
+
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (!target) return;
+
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        if (navbar && menuIcon) {
+            navbar.classList.remove('active');
+            menuIcon.classList.remove('bx-x');
+        }
+    });
+});
+
+if (typeof ScrollReveal !== 'undefined') {
+    const sr = ScrollReveal({
+        distance: '60px',
+        duration: 1200,
+        delay: 100,
+        reset: false
+    });
+
+    sr.reveal('.home-content, .section-kicker, .heading', { origin: 'top' });
+    sr.reveal('.terminal-block, .services-box, .portfolio-box, .contact form', { origin: 'bottom', interval: 100 });
+    sr.reveal('.about-img-wrap', { origin: 'left' });
+    sr.reveal('.about-content', { origin: 'right' });
+}
+
 if (typeof Typed !== 'undefined') {
-    const typed = new Typed('.multiple-text', {
-        strings: ['Fullstack Web Developer', 'Data Analyst', 'Blogger'],
-        typeSpeed: 100,
-        backSpeed: 100,
-        backDelay: 1000,
+    new Typed('.multiple-text', {
+        strings: [
+            'Analytics Engineer',
+            'Data Developer',
+            'Pipeline Builder',
+            'Dashboard Creator',
+            'SQL Specialist',
+        ],
+        typeSpeed: 60,
+        backSpeed: 35,
+        backDelay: 1400,
         loop: true
     });
 }
 
-
-/*==================== ENHANCEMENTS ====================*/
-
-/*==================== Smooth form validation and submission ====================*/
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
-    if (!contactForm) return; // Exit if form doesn't exist on page
-    
+    if (!contactForm) return;
+
     const submitBtn = document.getElementById('submitButton');
     const formStatus = document.createElement('div');
     formStatus.id = 'form-status';
     formStatus.className = 'alert';
     formStatus.style.display = 'none';
-    contactForm.insertBefore(formStatus, contactForm.firstChild);
-    
-    // Create loader element
+    contactForm.prepend(formStatus);
+
     const loader = document.createElement('span');
     loader.className = 'loader';
     loader.style.display = 'none';
-    if (submitBtn) {
-        submitBtn.parentNode.insertBefore(loader, submitBtn.nextSibling);
-    }
-    
-    // Real-time validation for all required fields
+    submitBtn?.insertAdjacentElement('afterend', loader);
+
     const requiredFields = contactForm.querySelectorAll('[required]');
-    
-    function validateField(field) {
+
+    const validateField = (field) => {
+        const value = field.value.trim();
+
         if (field.type === 'email') {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(field.value)) {
-                field.setCustomValidity('Please enter a valid email address');
-                field.classList.add('invalid');
-                return false;
-            } else {
-                field.setCustomValidity('');
-                field.classList.remove('invalid');
-                return true;
-            }
-        } else if (field.type === 'tel') {
-            const phoneRegex = /^[0-9]{10,11}$/;
-            const cleanNumber = field.value.replace(/\D/g, '');
-            if (!phoneRegex.test(cleanNumber)) {
-                field.setCustomValidity('Please enter a valid phone number (10-11 digits)');
-                field.classList.add('invalid');
-                return false;
-            } else {
-                field.setCustomValidity('');
-                field.classList.remove('invalid');
-                return true;
-            }
-        } else if (field.value.trim() === '') {
-            field.classList.add('invalid');
-            return false;
-        } else {
-            field.classList.remove('invalid');
-            return true;
+            const isValid = emailRegex.test(value);
+            field.classList.toggle('invalid', !isValid);
+            field.setCustomValidity(isValid ? '' : 'Please enter a valid email address.');
+            return isValid;
         }
-    }
-    
-    function validateForm() {
-        if (!submitBtn) return;
-        
-        let isValid = true;
-        requiredFields.forEach(field => {
-            if (!validateField(field)) {
-                isValid = false;
-            }
-        });
-        submitBtn.disabled = !isValid;
+
+        if (field.type === 'tel') {
+            const cleanValue = value.replace(/\D/g, '');
+            const isValid = cleanValue.length >= 8 && cleanValue.length <= 15;
+            field.classList.toggle('invalid', !isValid);
+            field.setCustomValidity(isValid ? '' : 'Please enter a valid phone number.');
+            return isValid;
+        }
+
+        const isValid = value.length > 0;
+        field.classList.toggle('invalid', !isValid);
+        field.setCustomValidity(isValid ? '' : 'This field is required.');
         return isValid;
-    }
-    
-    // Add event listeners to all required fields
-    requiredFields.forEach(field => {
-        field.addEventListener('input', function() {
-            validateField(this);
-            validateForm();
+    };
+
+    const validateForm = () => {
+        let isValid = true;
+        requiredFields.forEach((field) => {
+            if (!validateField(field)) isValid = false;
         });
-        
-        field.addEventListener('blur', function() {
-            validateField(this);
-            validateForm();
-        });
+        if (submitBtn) submitBtn.disabled = !isValid;
+        return isValid;
+    };
+
+    requiredFields.forEach((field) => {
+        field.addEventListener('input', () => validateForm());
+        field.addEventListener('blur', () => validateForm());
     });
-    
-    // Form submission handler
-    if (contactForm) {
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            if (!validateForm()) {
-                showStatus('Please fill all fields correctly.', 'danger');
-                return;
-            }
-            
-            if (submitBtn) submitBtn.disabled = true;
-            if (loader) loader.style.display = 'inline-block';
-            
-            try {
-                const formData = new FormData(contactForm);
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    showStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
-                    contactForm.reset();
-                    validateForm();
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            } catch (error) {
-                console.error('Form submission error:', error);
-                showStatus('Oops! Something went wrong. Please try again or email me directly at raissa@example.com.', 'danger');
-            } finally {
-                if (submitBtn) submitBtn.disabled = false;
-                if (loader) loader.style.display = 'none';
-                
-                // Auto-hide status message after 5 seconds
-                setTimeout(() => {
-                    if (formStatus) formStatus.style.display = 'none';
-                }, 5000);
-            }
-        });
-    }
-    
-    function showStatus(message, type) {
-        if (!formStatus) return;
-        
+
+    const showStatus = (message, type) => {
         formStatus.textContent = message;
         formStatus.className = `alert alert-${type}`;
         formStatus.style.display = 'block';
-        
-        // Scroll to status message
-        formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-    
-    // Initial validation
-    validateForm();
-});
+    };
 
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-/*==================== Lazy loading images ====================*/
-document.addEventListener('DOMContentLoaded', function() {
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src || img.src;
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
+        if (!validateForm()) {
+            showStatus('Please fill out all fields correctly.', 'danger');
+            return;
+        }
+
+        if (submitBtn) submitBtn.disabled = true;
+        loader.style.display = 'inline-block';
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: { Accept: 'application/json' }
             });
-        });
-        
-        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-            imageObserver.observe(img);
-        });
-    }
-});
 
+            if (!response.ok) throw new Error('Failed to submit');
 
-/*==================== Smooth scroll for anchor links ====================*/
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === '#' || href === '') return;
-            
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                
-                // Update URL without jumping
-                history.pushState(null, null, href);
-            }
+            showStatus("Message sent successfully! I'll get back to you soon.", 'success');
+            contactForm.reset();
+            validateForm();
+        } catch (error) {
+            showStatus('Something went wrong. Please try again in a moment.', 'danger');
+        } finally {
+            if (submitBtn) submitBtn.disabled = false;
+            loader.style.display = 'none';
+            setTimeout(() => {
+                formStatus.style.display = 'none';
+            }, 5000);
+        }
+    });
+
+    document.querySelectorAll('.portfolio-box img').forEach((img) => {
+        img.addEventListener('error', () => {
+            img.src = '/static/images/home.png';
         });
     });
+
+    validateForm();
 });
-
-
-/*==================== Add active class to current section with better performance ====================*/
-let ticking = false;
-
-window.addEventListener('scroll', () => {
-    if (!ticking) {
-        requestAnimationFrame(() => {
-            sections.forEach(sec => {
-                let top = window.scrollY;
-                let offset = sec.offsetTop - 150;
-                let height = sec.offsetHeight;
-                let id = sec.getAttribute('id');
-                
-                if (top >= offset && top < offset + height) {
-                    navLinks.forEach(links => {
-                        links.classList.remove('active');
-                        let activeLink = document.querySelector(`header nav a[href*="${id}"]`);
-                        if (activeLink) {
-                            activeLink.classList.add('active');
-                        }
-                    });
-                }
-            });
-            ticking = false;
-        });
-        ticking = true;
-    }
-});
-
-
-/*==================== Handle portfolio image errors ====================*/
-document.addEventListener('DOMContentLoaded', function() {
-    const portfolioImages = document.querySelectorAll('.portfolio-box img');
-    const placeholderImage = '/static/images/placeholder.jpg'; // Update with your placeholder path
-    
-    portfolioImages.forEach(img => {
-        img.addEventListener('error', function() {
-            this.src = placeholderImage;
             this.alt = 'Image not available';
         });
     });

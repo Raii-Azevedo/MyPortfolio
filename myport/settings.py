@@ -14,10 +14,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key')
 
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
-    "raissa-azevedo.up.railway.app"
+    "raissa-azevedo.up.railway.app",
+    "127.0.0.1",
+    "localhost",
 ]
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
@@ -164,5 +166,7 @@ LOGOUT_REDIRECT_URL = 'index'
 
 # CSRF
 CSRF_TRUSTED_ORIGINS = [
-    "https://raissa-azevedo.up.railway.app"
+    "https://raissa-azevedo.up.railway.app",
+    "http://127.0.0.1:8000",
+    "http://localhost:8000",
 ]
