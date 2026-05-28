@@ -406,31 +406,9 @@ section { min-height: auto; padding: 11rem 8% 5rem; }
    ABOUT
    ============================================================ */
 .about {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 4.5rem;
-  align-items: start;
-}
-
-.about-img-wrap {
-  position: relative;
-}
-
-.about-img-wrap::before {
-  content: '{ data: "about_me" }';
   display: block;
-  font-family: var(--font-mono);
-  font-size: 1.1rem;
-  color: var(--lime);
-  opacity: 0.5;
-  margin-bottom: 1rem;
-}
-
-.about-img-wrap img {
-  width: 100%;
-  border-radius: 1rem;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-lg);
+  max-width: 84rem;
+  margin: 0 auto;
 }
 
 .heading {
@@ -669,3 +647,25 @@ section { min-height: auto; padding: 11rem 8% 5rem; }
   max-width: 60rem;
   margin: 0 auto 2.4rem;
 }
+
+.contact form {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 2.8rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.contact form .input-box {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.contact form input,
+.contact form textarea {
+  width: 100%;
+  padding: 1.3rem 1.5rem;
+  margin-top: 1.2rem;
+  border-radius: 0

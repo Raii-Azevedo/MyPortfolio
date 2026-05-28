@@ -406,31 +406,9 @@ section { min-height: auto; padding: 11rem 8% 5rem; }
    ABOUT
    ============================================================ */
 .about {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 4.5rem;
-  align-items: start;
-}
-
-.about-img-wrap {
-  position: relative;
-}
-
-.about-img-wrap::before {
-  content: '{ data: "about_me" }';
   display: block;
-  font-family: var(--font-mono);
-  font-size: 1.1rem;
-  color: var(--lime);
-  opacity: 0.5;
-  margin-bottom: 1rem;
-}
-
-.about-img-wrap img {
-  width: 100%;
-  border-radius: 1rem;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-lg);
+  max-width: 84rem;
+  margin: 0 auto;
 }
 
 .heading {
