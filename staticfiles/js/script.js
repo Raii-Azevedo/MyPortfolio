@@ -71,8 +71,7 @@ if (typeof Typed !== 'undefined') {
     new Typed('.multiple-text', {
         strings: [
             'Analytics Engineer',
-            'Data Developer',
-            'Pipeline Builder',
+            'Web Developer',
             'Dashboard Creator',
             'SQL Specialist',
         ],
