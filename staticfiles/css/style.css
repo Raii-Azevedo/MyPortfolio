@@ -407,8 +407,6 @@ section { min-height: auto; padding: 11rem 8% 5rem; }
    ============================================================ */
 .about {
   display: block;
-  max-width: 84rem;
-  margin: 0 auto;
 }
 
 .heading {
@@ -668,4 +666,5 @@ section { min-height: auto; padding: 11rem 8% 5rem; }
   width: 100%;
   padding: 1.3rem 1.5rem;
   margin-top: 1.2rem;
-  border-radius: 0
+  border-radius: 0.6rem;
+  border: 1px solid var(--borde
